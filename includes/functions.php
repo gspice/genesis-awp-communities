@@ -17,7 +17,7 @@ function awp_template_include( $template ) {
         if ( file_exists(get_stylesheet_directory() . '/archive-' . $post_type . '.php' ) ) {
             return get_stylesheet_directory() . '/archive-' . $post_type . '.php';
         } else {
-            echo GENAWPCOMM_BASE_DIR  . '/templates/archive-' . $post_type . '.php';
+           // echo GENAWPCOMM_BASE_DIR  . '/templates/archive-' . $post_type . '.php';
             return GENAWPCOMM_BASE_DIR  . '/templates/archive-' . $post_type . '.php';
         }
     }
@@ -26,7 +26,7 @@ function awp_template_include( $template ) {
         if ( file_exists(get_stylesheet_directory() . '/archive-' . $post_type . '.php') ) {
             return $template;
         } else {
-            echo GENAWPCOMM_BASE_DIR  . '/templates/archive-' . $post_type . '.php';
+          //  echo GENAWPCOMM_BASE_DIR  . '/templates/archive-' . $post_type . '.php';
             return GENAWPCOMM_BASE_DIR  . '/templates/archive-' . $post_type . '.php';
         }
     }
@@ -35,7 +35,7 @@ function awp_template_include( $template ) {
         if ( file_exists(get_stylesheet_directory() . '/single-' . $post_type . '.php') ) {
             return $template;
         } else {
-        	echo GENAWPCOMM_BASE_DIR  . '/templates/single-' . $post_type . '.php';
+        //	echo GENAWPCOMM_BASE_DIR  . '/templates/single-' . $post_type . '.php';
            return GENAWPCOMM_BASE_DIR  . '/templates/single-' . $post_type . '.php';
         }
     }

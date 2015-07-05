@@ -7,7 +7,7 @@
  * @subpackage Customizations
  */
 
-echo ' we are in the template';
+//echo ' we are in the template';
 
 // Force full width content layout
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );

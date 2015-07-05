@@ -10,9 +10,9 @@
 /**
  * AWP Featured Community widget class.
  *
- * @since 1.0.0
+ * @since 0.2.0
  */
-class AWP_Featured_Community extends WP_Widget {
+class AWP_Featured_Communities extends WP_Widget {
 
 	/**
 	 * Holds widget settings defaults, populated in constructor.
@@ -56,7 +56,7 @@ class AWP_Featured_Community extends WP_Widget {
 	/**
 	 * Echo the widget content.
 	 *
-	 * @since 1.0.0
+     * @since 0.2.0
 	 *
 	 * @param array $args Display arguments including before_title, after_title, before_widget, and after_widget.
 	 * @param array $instance The settings for the particular instance of the widget
@@ -159,7 +159,7 @@ class AWP_Featured_Community extends WP_Widget {
 	 * The newly calculated value of $instance should be returned.
 	 * If "false" is returned, the instance won't be saved/updated.
 	 *
-	 * @since 1.0.0
+	 * @since 0.2.0
 	 *
 	 * @param array $new_instance New settings for this instance as input by the user via form()
 	 * @param array $old_instance Old settings for this instance
@@ -177,16 +177,18 @@ class AWP_Featured_Community extends WP_Widget {
 	/**
 	 * Echo the settings update form.
 	 *
-	 * @since 1.0.0
+	 * @since 0.2.0
 	 *
 	 * @param array $instance Current settings
 	 */
 	function form( $instance ) {
+        //settings_fields('awp_community_featured_widget'); 
 
 		//* Merge with defaults
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
 		?>
+
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'genesis' ); ?>:</label>
 			<input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>"/>

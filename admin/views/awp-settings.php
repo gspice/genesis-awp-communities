@@ -12,10 +12,13 @@
 				<?php
               
 				$awp_options = get_option('plugin_awp_community_settings');
+				echo 'First ';
 				var_dump($awp_options);
 
 				if ( !isset($awp_options['stylesheet_load']) ) {
 					$awp_options['stylesheet_load'] = 0;
+	  			    echo '<p style="color:green; font-weight: bold;">The plugin stylesheet is registered<p>';
+
 				}
 
 				if ($awp_options['stylesheet_load'] == 1) {
@@ -23,7 +26,8 @@
 				}
 				
 				$awp_options['slug'] = sanitize_title($awp_options['slug']);
-var_dump($awp_options);
+                echo 'Second ';
+                var_dump($awp_options);
 				?>
 				<form action="options.php" method="post" id="awp-stylesheet-options-form">
 					<?php settings_fields('awp_community_options'); ?>

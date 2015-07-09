@@ -19,51 +19,7 @@ A stylesheet is included and if you prefer to use your own stylesheet, you can d
 
 FEATURED COMMUNITIES WIDGET
 
-Feature one agent, a random agent, a random group of agents or all agents.
-
-When displaying Show Random, you may choose how many agents to select and display at random with each page load. (1-99)
-
-When displaying all agents, you may choose how they are sorted: random, title, date added, menu order, or ID. They can be ordered in Ascending or descending order.
-
-Choosing random will shuffle with each page load.
-
-IMPROVED SHORTCODE FUNCTIONALITY
-
-The shortcode [agent_profiles] can now be sorted. Here are some examples of what you can do.
-
-To show selected agents:
-
-Example: post_id 752 and 760 and sorted by title (agent’s name):
-
-[agent_profiles orderby=title order=ASC id=’752,760′]
-
-To show all agents in a random order:
-
-[agent_profiles orderby=rand]
-
-To show all agents sorted by title (agent’s name) in ascending order (A-Z):
-
-[agent_profiles orderby=title order=ASC]
-
-To show all agents sorted by menu_order (Order # in Page Attributes for that agent) in descending order (3,2,1):
-
-[agent_profiles orderby=menu_order order=DESC]
-
-Additional sorts: orderby=date, orderby=ID (post ID #)
-
-Why I wrote this plugin: http://savvyjackiedesigns.com/genesis-agent-profiles-extended-plugin/
-
-NEW AGENT PHOTO SIZE
-
-This plugin adds a new image size of 200px by 200px for the agent’s featured image. It is not selected by default when you activate the plugin. If you already have images uploaded, you will need to regenerate your thumbnail images first.
-
-
-CHANGES IN HOW THE PLUGIN BEHAVES
-
-If you are using the AgentPress listings plugin or the WP Listings plugin to connect agent listings to their profile:
-
-The View My Listings link will only be shown if that agent has listings. In the original plugin, the link was shown regardless. Now the listings are checked before displaying the link. No sense sending visitors to link without any listings.
-
+Adds a widget for sidebar or for using on the home page. 
 
 
 == Installation ==

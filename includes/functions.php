@@ -105,6 +105,23 @@ function awp_remove_genesis_cpt_metaboxes( $_genesis_cpt_settings_pagehook ) {
     
 }
 
+add_action( 'pre_get_posts', 'awp_community_change_sort_order_custom', 12 );
+/**
+ * Add pagination and sort by title for community archives
+ * show all posts on one page limit 100
+ */
+function awp_community_change_sort_order_custom( $query ) {
+
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+    
+    if( $query->is_main_query() && !is_admin() && is_post_type_archive( 'awp-community' ) ) {
+
+        $query->set( 'orderby', 'title' );
+        $query->set( 'order', 'ASC' );
+        $query->set( 'paged', $paged );
+        $query->set('posts_per_page', 12);
+    } 
+}
 
 
 ?>

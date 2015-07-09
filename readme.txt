@@ -13,14 +13,26 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin adds a Community Custom Post Type to a Genesis Child theme, similar to the one in the Winning Agent Pro theme. 
 
+CUSTOM POST TYPE SLUG
+You can choose the name you want to use for the slug URL under Communities -> Settings. It defaults to ‘communities’. 
+
+Example: http://yoursite.com/communities
+
 STYLESHEET 
 
 A stylesheet is included and if you prefer to use your own stylesheet, you can deregister it under Communities -> Settings. This deactivates the stylesheet. You may copy the css styles from the awp-communities.css file in the css folder of the plugin directory and paste them in your theme’s stylesheet.
 
 FEATURED COMMUNITIES WIDGET
 
-Adds a widget for sidebar or for using on the home page. 
+Adds a widget for sidebar or for using on the home page. Includes a random sort option, along with sorting by title, date, post_id, and menu_order. Option to include page title, the featured image with choice of sizes, and whether to include any content. CSS is style for using this widget in the sidebar and on the home page.
 
+COMMUNITY ARCHIVE PAGE
+
+Sorts by title (ascending A-Z).
+
+Example: http://yoursite.com/communities
+
+Will display up to 12 communities per page (four across on desktop and responsive for smaller viewport widths). (This keeps page load times fast). You can increase if needed by unhooking the function and adding a replacement hook in your functions.php 
 
 == Installation ==
 
@@ -45,7 +57,6 @@ Coming soon.
 = What features have been added? =
 
 Coming soon.
-
 
 
 ==Changelog==

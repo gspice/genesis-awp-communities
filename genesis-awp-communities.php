@@ -15,7 +15,7 @@
  * Plugin Name:       Genesis AWP Communities
  * Plugin URI:
  * Description:       Adds a custom post type for Communities to Genesis Child Theme. Includes Featured Communities Widget, Custom Archive Page and ability to edit slug name.
- * Version:           0.2.2
+ * Version:           0.2.3
  * Author:            Jackie D'Elia
  * Author URI:        http://www.savvyjackiedesigns.com
  * Text Domain:       genesis-awp-community

@@ -116,7 +116,9 @@ class AWP_Featured_Communities extends WP_Widget {
 				echo '<div class="entry-content">';
 
 				if ( 'excerpt' == $instance['show_content'] ) {
-					the_excerpt();
+					$current_excerpt = get_the_excerpt();
+					echo $current_excerpt;
+					//the_excerpt();
 				}
 				elseif ( 'content-limit' == $instance['show_content'] ) {
 					the_content_limit( (int) $instance['content_limit'], esc_html( $instance['more_text'] ) );
@@ -210,9 +212,7 @@ class AWP_Featured_Communities extends WP_Widget {
 				<option value="date" <?php selected( 'date', $instance['orderby'] ); ?>><?php _e( 'Date', 'genesis' ); ?></option>
 				<option value="title" <?php selected( 'title', $instance['orderby'] ); ?>><?php _e( 'Title', 'genesis' ); ?></option>
 				<option value="parent" <?php selected( 'parent', $instance['orderby'] ); ?>><?php _e( 'Parent', 'genesis' ); ?></option>
-<!-- Start Menu Order Sort Added --> 
 				<option value="menu_order" <?php selected( 'menu_order', $instance['orderby'] ); ?>><?php _e( 'Menu Order', 'genesis' ); ?></option>
-<!-- End Menu Order Sort Added --> 
 				<option value="ID" <?php selected( 'ID', $instance['orderby'] ); ?>><?php _e( 'ID', 'genesis' ); ?></option>
 				<option value="comment_count" <?php selected( 'comment_count', $instance['orderby'] ); ?>><?php _e( 'Comment Count', 'genesis' ); ?></option>
 				<option value="rand" <?php selected( 'rand', $instance['orderby'] ); ?>><?php _e( 'Random', 'genesis' ); ?></option>
@@ -263,7 +263,9 @@ class AWP_Featured_Communities extends WP_Widget {
 			</select>
 			<br />
 			<label for="<?php echo $this->get_field_id( 'content_limit' ); ?>"><?php _e( 'Limit content to', 'genesis' ); ?>
-				<input type="text" id="<?php echo $this->get_field_id( 'content_limit' ); ?>" name="<?php echo $this->get_field_name( 'content_limit' ); ?>" value="<?php echo esc_attr( intval( $instance['content_limit'] ) ); ?>" size="3" />
+				
+				   <input type="text" id="<?php echo $this->get_field_id( 'content_limit' ); ?>" name="<?php echo $this->get_field_name( 'content_limit' ); ?>" value="<?php echo esc_attr( intval( $instance['content_limit'] ) ); ?>" size="3" />
+				
 			</label>
 		</p>
 

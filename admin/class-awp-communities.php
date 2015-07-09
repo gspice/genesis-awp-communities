@@ -44,9 +44,7 @@ class AWP_Communities {
     
     function awp_sanitize_data( $input ) {
         
-        echo 'We are in the sanitize';
-        var_dump( $input );
-        
+             
         if( !isset( $input['stylesheet_load'] ) || $input['stylesheet_load'] != '1' ) {
             $input['stylesheet_load'] = 0;
         } 

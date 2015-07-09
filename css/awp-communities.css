@@ -1,5 +1,6 @@
 /* Styles for Genesis AWP Community Plugin */
 
+
 .featured-community {
 	text-align: center;
 	overflow: hidden;
@@ -40,13 +41,11 @@
 	-ms-transition:     all 0.1s ease-in-out;
 	-o-transition:      all 0.1s ease-in-out;
 	transition:         all 0.1s ease-in-out;
-
 }
 
 .awp-community-image {
 	width: 250px;
 	height: auto;
-
 }
 
 .featured-community .awp-community.entry img:hover,
@@ -61,11 +60,15 @@
 }
 
 .featured-community .entry-title {
-	padding: 20px;
+	padding: 20px 20px 0 20px;
 	text-transform: uppercase;
 	text-align: center;
-	font-size: 20px;
-	font-size: 2.0rem;
+	font-size: 18px;
+	font-size: 1.8rem;
+}
+.archive .awp-community-image .entry-title,
+.sidebar .featured-community .entry-title {
+	padding: 20px;
 }
 
 .featured-community .entry-title a {
@@ -82,17 +85,42 @@
 	}
 	.featured-community .awp-community.entry img,
 	.archive .awp-community.entry img {
-
+	
 		width:440px;
-
-
+	
 	}
 
 	.awp-community-image {
 		width: 440px;
+	}
 
+	.sidebar .featured-community {
+		width: 100%;
+	}
+
+	.sidebar .featured-community .awp-community {
+		width: 80%;
 
 	}
+	.sidebar .featured-community .awp-community.entry img {
+		width: 100%;
+	}
+
+	.sidebar .awp-community-image {
+		width: 100%;
+	}
+	.sidebar .awp-community .entry-header {
+		width: 100%;
+	}
+
+	.sidebar .featured-community .entry-title {
+		padding: 10px;
+		text-transform: uppercase;
+		text-align: center;
+		font-size: 12px;
+		font-size: 1.2rem;
+	}
+
 }
 
 @media only screen and (max-width: 800px) {
@@ -111,12 +139,16 @@
 
 	.awp-community-image {
 		width: 300px;
+	}
 
-
+	.sidebar .featured-community .entry-title {
+		font-size: 20px;
+		font-size: 2.0rem;
 	}
 }
 
 @media only screen and (max-width: 600px) {
+	.sidebar .featured-community .awp-community,
 	.featured-community .awp-community {
 
 		width: 100%;
@@ -137,5 +169,11 @@
 		width: 100%;
 
 
+	}
+
+	.sidebar .featured-community .entry-title,
+	.featured-community .entry-title {
+		font-size: 18px;
+		font-size: 1.8rem;
 	}
 }

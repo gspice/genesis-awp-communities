@@ -1,13 +1,9 @@
 <?php
 /**
- * This file adds the custom community post type archive template to the Winning Agent Pro Theme.
+ * This file adds the custom community post type archive template the plugin uses.
  *
- * @author Carrie Dils
- * @package Winning Agent Pro
- * @subpackage Customizations
+ * @author Jackie D'Elia
  */
-
-//echo ' we are in the template';
 
 // Force full width content layout
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
@@ -32,7 +28,6 @@ remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 // Remove the post title
 remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
 
-
 // Remove the post image
 remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
 
@@ -49,11 +44,10 @@ function awp_community_grid() {
 
     if ( $image = genesis_get_image( 'format=url&size=awp-feature-community' ) ) {
         printf( '<div class="awp-community-image"><div class="community-featured-image"><a href="%s" rel="bookmark"><img src="%s" alt="%s" /></a></div>', get_permalink(), $image, the_title_attribute( 'echo=0' ) );
-
     }
 
 	echo '<header class="entry-header">';
-					printf( '<h2 class="entry-title"><a href="%s" title="%s">%s</a></h2>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_title() );
+		printf( '<h2 class="entry-title"><a href="%s" title="%s">%s</a></h2>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_title() );
 	echo '</header>';
 }
 

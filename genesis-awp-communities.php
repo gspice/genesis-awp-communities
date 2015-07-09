@@ -1,9 +1,10 @@
 <?php
-
 /**
  * Genesis AWP Communities Plugin
  *
- * Read more about why we created this plugin at http://savvyjackiedesigns.com/genesis-site-title-styles-plugin/
+ * This plugin is based on the Community Custom Post Type found in the Winning Agent Pro theme by Carrie Dils.
+ * Now you can add this custom post to any Genesis child theme including the AgentPress Pro by StudioPress.  
+ * Read more about why we created this plugin at http://savvyjackiedesigns.com/genesis-awp-communities-plugin/
  *
  * @package           Genesis_AWP_Communities
  * @author            Jackie D'Elia
@@ -14,13 +15,15 @@
  * Plugin Name:       Genesis AWP Communities
  * Plugin URI:
  * Description:       Adds a custom post type for Communities to Genesis Child Theme. Includes Featured Communities Widget, Custom Archive Page and ability to edit slug name.
- * Version:           0.2.1
+ * Version:           0.2.2
  * Author:            Jackie D'Elia
  * Author URI:        http://www.savvyjackiedesigns.com
  * Text Domain:       genesis-awp-community
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Domain Path:       /languages
+ * Text Domain:       genesis-awp-communities
+ * Domain Path:       /languages/
+ * Function prefix:   genwpacc_
  * GitHub Plugin URI:
  * GitHub Branch:     master
  */
@@ -146,36 +149,35 @@ function create_custom_post_type() {
     
     $args    = apply_filters( 'awp_community_post_type_args', array(
         'labels' => array(
-            'name' => __( 'Communities', 'awp' ),
-            'singular_name' => __( 'Community', 'awp' ),
+        'name'               => __( 'Communities', 'genesis-awp-communities' ),
+        'singular_name'      => __( 'Community', 'genesis-awp-communities' ),
+        'menu_name'          => __( 'Communities','genesis-awp-communities' ),
+        'name_admin_bar'     => __( 'Community', 'genesis-awp-communities' ),
+        'add_new'            => __( 'Add New', 'genesis-awp-communities' ),
+        'add_new_item'       => __( 'Add New Community', 'genesis-awp-communities' ),
+        'new_item'           => __( 'New Community', 'genesis-awp-communities' ),
+        'edit_item'          => __( 'Edit Community', 'genesis-awp-communities' ),
+        'view_item'          => __( 'View Community', 'genesis-awp-communities' ),
+        'all_items'          => __( 'All Communities', 'genesis-awp-communities' ),
+        'search_items'       => __( 'Search Communities', 'genesis-awp-communities' ),
+        'parent_item_colon'  => __( 'Parent Communities:', 'genesis-awp-communities' ),
+        'not_found'          => __( 'No communities found.', 'genesis-awp-communities' ),
+        'not_found_in_trash' => __( 'No communities found in Trash.', 'genesis-awp-communities' )
         ) ,
         'has_archive' => true,
         'hierarchical' => true,
         'menu_icon' => 'dashicons-admin-home',
         'public' => true,
-        'supports' => array(
-            'title',
-            'editor',
-            'author',
-            'thumbnail',
-            'excerpt',
-            'trackbacks',
-            'custom-fields',
-            'revisions',
-            'page-attributes',
-            'genesis-seo',
-            'genesis-cpt-archives-settings'
-        ) ,
-        'taxonomies' => array(
-            'neighborhoods'
-        ) ,
-        'public' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
         'query_var' => true,
-        'menu_position' => 7,
-        'has_archive' => true,
+        'menu_position' => 25,
+        'publicly_queryable' => true,
+       // 'taxonomies' => array('features'),  // reserved for future release
         'supports' => array(
             'title',
             'editor',
+            'excerpt',
             'comments',
             'thumbnail',
             'page-attributes',
@@ -184,8 +186,7 @@ function create_custom_post_type() {
             'genesis-simple-sidebars',
             'genesis-cpt-archives-settings'
         ) ,
-        'rewrite' => array(
-            'slug' => $options['slug']
+        'rewrite' => array('slug' => $options['slug'], 'with_front' => false
         ) ,
     ) );
     
@@ -239,7 +240,6 @@ add_action( 'widgets_init', 'awp_register_widget' );
  */
 function awp_register_widget() {
     
-    // echo ' Widget has been registered';
     register_widget( 'AWP_Featured_Communities' );
 }
 require_once( dirname( __FILE__ ) . '/includes/functions.php' );
@@ -248,4 +248,5 @@ require_once( dirname( __FILE__ ) . '/admin/class-awp-communities.php' );
 
 /** Instantiate */
 $_awp_community = new AWP_Communities;
+
 ?>

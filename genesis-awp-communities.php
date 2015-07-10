@@ -15,7 +15,7 @@
  * Plugin Name:       Genesis AWP Communities
  * Plugin URI:
  * Description:       Adds a custom post type for Communities to Genesis Child Theme. Includes Featured Communities Widget, Custom Archive Page and ability to edit slug name.
- * Version:           0.2.5
+ * Version:           0.3.0
  * Author:            Jackie D'Elia
  * Author URI:        http://www.savvyjackiedesigns.com
  * Text Domain:       genesis-awp-community
@@ -23,7 +23,7 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       genesis-awp-communities
  * Domain Path:       /languages/
- * Function prefix:   genwpacc_
+ * Function prefix:   genawpcomm_
  * GitHub Plugin URI:
  * GitHub Branch:     master
  */
@@ -113,27 +113,27 @@ function genawpcomm_activation_check() {
         wp_die( sprintf( __( 'Oops.. you need to update to the latest version of the %1$sGenesis Framework version %2$s%3$s or greater to install this plugin.', GENAWPCOMM_DOMAIN ), '<a href="http://savvyjackiedesigns.com/go/genesis-framework-theme">', '</a>', $minimum_genesis_version ) );
     }
 }
-register_deactivation_hook( __FILE__, 'myplugin_deactivate' );
+register_deactivation_hook( __FILE__, 'genawpcomm_myplugin_deactivate' );
 
-function myplugin_deactivate() {
+function genawpcomm_myplugin_deactivate() {
     flush_rewrite_rules();
 }
 
-register_activation_hook( __FILE__, 'myplugin_flush_rewrites' );
-function myplugin_flush_rewrites() {
+register_activation_hook( __FILE__, 'genawpcomm_myplugin_flush_rewrites' );
+function genawpcomm_myplugin_flush_rewrites() {
     
     // call your CPT registration function here (it should also be hooked into 'init')
     
-    create_custom_post_type();
+    genawpcomm_create_custom_post_type();
     flush_rewrite_rules();
 }
 
-add_action( 'init', 'create_custom_post_type' );
+add_action( 'init', 'genawpcomm_create_custom_post_type' );
 
 /**
  * Creates our "Community" post type and image sizes
  */
-function create_custom_post_type() {
+function genawpcomm_create_custom_post_type() {
     
     $options = get_option( 'plugin_awp_community_settings' );
     
@@ -204,8 +204,8 @@ function create_custom_post_type() {
     }
     
     // Show the custom sizes when choosing image size in media
-    add_filter( 'image_size_names_choose', 'my_custom_sizes' );
-    function my_custom_sizes( $sizes ) {
+    add_filter( 'image_size_names_choose', 'genawpcomm_my_custom_sizes' );
+    function genawpcomm_my_custom_sizes( $sizes ) {
         return array_merge( $sizes, array(
             'awp-feature-community'              => __( 'awp-feature-community' ),
             'awp-feature-small'              => __( 'awp-feature-small' ),
@@ -216,8 +216,8 @@ function create_custom_post_type() {
    
 }
 
-add_action( 'wp_enqueue_scripts', 'awp_enqueue_main_stylesheet', 99 );
-function awp_enqueue_main_stylesheet() {
+add_action( 'wp_enqueue_scripts', 'genawpcomm_enqueue_main_stylesheet', 99 );
+function genawpcomm_enqueue_main_stylesheet() {
   $options = get_option( 'plugin_awp_community_settings' );
     
     if( $options['stylesheet_load'] == 0 ) {
@@ -232,13 +232,13 @@ function awp_enqueue_main_stylesheet() {
     }
 }
 
-add_action( 'widgets_init', 'awp_register_widget' );
+add_action( 'widgets_init', 'genawpcomm_register_widget' );
 
 /**
  * Register Widget
  * @return type
  */
-function awp_register_widget() {
+function genawpcomm_register_widget() {
     
     register_widget( 'AWP_Featured_Communities' );
 }

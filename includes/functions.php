@@ -1,16 +1,16 @@
 <?php 
 // functions for Genesis AWP Communities
 
-add_filter( 'template_include', 'awp_template_include',99 );
+add_filter( 'template_include', 'genawpcomm_awp_template_include',99 );
 /**
  * Display based on templates in plugin, or override with same name template in theme directory
  */
-function awp_template_include( $template ) {
+function genawpcomm_awp_template_include( $template ) {
 
     $post_type = 'awp-community';  
     
     
-    if ( awp_communities_is_taxonomy_of($post_type) ) {
+    if ( genawpcomm_awp_communities_is_taxonomy_of($post_type) ) {
         if ( file_exists(get_stylesheet_directory() . '/archive-' . $post_type . '.php' ) ) {
             return get_stylesheet_directory() . '/archive-' . $post_type . '.php';
         } else {
@@ -44,7 +44,7 @@ function awp_template_include( $template ) {
 /**
  * Returns true if the queried taxonomy is a taxonomy of the given post type
  */
-function awp_communities_is_taxonomy_of($post_type) {
+function genawpcomm_awp_communities_is_taxonomy_of($post_type) {
 	$taxonomies = get_object_taxonomies($post_type);
 	$queried_tax = get_query_var('taxonomy');
 
@@ -73,16 +73,16 @@ function build_taxonomies() {
 */
 
 // change the archive page for Community Post Type to display up to 100 communities per page.
-add_action( 'pre_get_posts', 'awp_cpt_posts_per_page' );
-function awp_cpt_posts_per_page( $query ) {
+add_action( 'pre_get_posts', 'genawpcomm_awp_cpt_posts_per_page' );
+function genawpcomm_awp_cpt_posts_per_page( $query ) {
     if( $query->is_main_query() && is_post_type_archive( 'awp-community' ) && ! is_admin() ) {
         $query->set( 'posts_per_page', '100' );
     }
 }
 
 // Add featured-wide image above single posts.
-add_action( 'genesis_before_entry_content', 'awp_featured_image' );
-function awp_featured_image() {
+add_action( 'genesis_before_entry_content', 'genawpcomm_awp_featured_image' );
+function genawpcomm_awp_featured_image() {
     global $post;
 
     // Return early if not a singular or does not have thumbnail
@@ -97,20 +97,20 @@ function awp_featured_image() {
 
 // remove the layout settings for the archive page of awp-community since we force it to full width
 
-add_action( 'genesis_cpt_archives_settings_metaboxes', 'awp_remove_genesis_cpt_metaboxes' );
-function awp_remove_genesis_cpt_metaboxes( $_genesis_cpt_settings_pagehook ) {
+add_action( 'genesis_cpt_archives_settings_metaboxes', 'genawpcomm_awp_remove_genesis_cpt_metaboxes' );
+function genawpcomm_awp_remove_genesis_cpt_metaboxes( $_genesis_cpt_settings_pagehook ) {
     
     // remove layout settings
     remove_meta_box( 'genesis-cpt-archives-layout-settings', $_genesis_cpt_settings_pagehook, 'main' );
     
 }
 
-add_action( 'pre_get_posts', 'awp_community_change_sort_order_custom', 12 );
+add_action( 'pre_get_posts', 'genawpcomm_awp_community_change_sort_order_custom', 12 );
 /**
  * Add pagination and sort by title for community archives
  * show all posts on one page limit 100
  */
-function awp_community_change_sort_order_custom( $query ) {
+function genawpcomm_awp_community_change_sort_order_custom( $query ) {
 
     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
     

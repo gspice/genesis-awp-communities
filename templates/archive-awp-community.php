@@ -39,8 +39,8 @@ function awp_add_community_body_class( $classes ) {
 }
 
 // Add the featured image and post title
-add_action( 'genesis_entry_header', 'awp_community_grid' );
-function awp_community_grid() {
+add_action( 'genesis_entry_header', 'genawpcomm_awp_community_grid' );
+function genawpcomm_awp_community_grid() {
 
     if ( $image = genesis_get_image( 'format=url&size=awp-feature-community' ) ) {
         printf( '<div class="awp-community-image"><div class="community-featured-image"><a href="%s" rel="bookmark"><img src="%s" alt="%s" /></a></div>', get_permalink(), $image, the_title_attribute( 'echo=0' ) );
